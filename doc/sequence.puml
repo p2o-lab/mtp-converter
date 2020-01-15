@@ -1,0 +1,38 @@
+@startuml
+
+skinparam monochrome true
+
+actor user
+participant index.ts
+participant Server
+participant http.Server
+participant Middleware
+participant Routes
+participant Router
+
+activate user
+
+index.ts -> Server : new Server()
+activate Server
+
+Server -> Middleware : init()
+activate Middleware
+Server -> Routes : init()
+activate Routes
+Routes -> Router : use()
+
+Server -> http.Server : createServer(..)
+activate http.Server
+http.Server -> http.Server : listen(port)
+
+user -> Router : call "/mtp"
+Router -> MtpParser : new MtpParser()
+Router -> MtpParser : extract(...)
+MtpParser -> Router : result
+Router -> http.Server : result
+http.Server -> user : display result
+
+deactivate Server
+
+
+@enduml
