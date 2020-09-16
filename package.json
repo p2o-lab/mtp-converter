@@ -16,7 +16,7 @@
     "cors": "^2.8.5",
     "debug": "~2.6.9",
     "express": "^4.17.1",
-    "express-fileupload": "^1.1.8",
+    "express-fileupload": "^1.1.10",
     "express-static": "^1.2.6",
     "extract-zip": "^1.6.8",
     "libxmljs": "^0.19.7",
